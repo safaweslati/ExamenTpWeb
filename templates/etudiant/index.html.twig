@@ -41,7 +41,7 @@
                 "table-dark"]) }}">
             <td>{{ etudiant.name }}</td>
             <td>{{ etudiant.firstname }}</td>
-            <td>{% if etudiant.section is defined %}{{ etudiant.section }} {% else %} Etudiant non affecté à une section{% endif %}</td>
+            <td>{% if etudiant.section is defined and etudiant.section %}{{ etudiant.section }} {% else %} Etudiant non affecté à une section{% endif %}</td>
             <td>
                 <a href="{{ path('add_etudiant',{ id:etudiant.id}) }}">Edit</a>
                 <a href="{{ path('delete',{ id:etudiant.id}) }}">delete</a>
