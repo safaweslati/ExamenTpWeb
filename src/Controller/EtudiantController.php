@@ -34,8 +34,8 @@ class EtudiantController extends AbstractController
             $manager->persist($etudiant);
             $manager->flush();
             $this->addFlash('succes', "l'etudiant a été ajouté avec succés");
-            $etudiants = $manager->getRepository(Etudiant::class)->findAll();
-            return $this->render("etudiant/index.html.twig", ['etudiant' => $etudiants]);
+           // $etudiants = $manager->getRepository(Etudiant::class)->findAll();
+            return $this->redirectToRoute("listes_etudiant");
         } else {
             return $this->render("etudiant/add-etudiant.html.twig", ['form' => $form->createView()]);
         }
