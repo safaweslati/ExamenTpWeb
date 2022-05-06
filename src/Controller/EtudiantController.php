@@ -33,7 +33,11 @@ class EtudiantController extends AbstractController
             $manager = $doctrine->getManager();
             $manager->persist($etudiant);
             $manager->flush();
-            $this->addFlash('succes', "l'etudiant a été ajouté avec succés");
+            if($new==true){
+            $this->addFlash('succes', "l'etudiant a été ajouté avec succés");}
+            else{
+                $this->addFlash('succes', "l'etudiant a été mis à jour avec succés");
+        }
            // $etudiants = $manager->getRepository(Etudiant::class)->findAll();
             return $this->redirectToRoute("listes_etudiant");
         } else {
