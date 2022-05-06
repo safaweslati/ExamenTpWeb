@@ -12,6 +12,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class EtudiantController extends AbstractController
 {
+    #[Route('/Etudiants', name: 'listes_etudiant')]
+    public function listeEtudiant(ManagerRegistry $manager): Response{
+        $etudiants = $manager->getRepository(Etudiant::class)->findAll();
+        return $this->render("etudiant/index.html.twig", ['etudiants' => $etudiants]);
+    }
+
     #[Route('/EditEtudiant/{id<\d+>?0}', name: 'add_etudiant')]
     public function index(Etudiant $etudiant = null, ManagerRegistry $doctrine, Request $request): Response
     {
@@ -27,7 +33,7 @@ class EtudiantController extends AbstractController
             $manager = $doctrine->getManager();
             $manager->persist($etudiant);
             $manager->flush();
-            $this->addFlash('success', "l'etudiant a été ajouté avec succés");
+            $this->addFlash('succes', "l'etudiant a été ajouté avec succés");
             $etudiants = $manager->getRepository(Etudiant::class)->findAll();
             return $this->render("etudiant/index.html.twig", ['etudiant' => $etudiants]);
         } else {
@@ -46,6 +52,6 @@ class EtudiantController extends AbstractController
         } else {
             $this->addFlash('error', "la personne n'existe pas");
         }
-        return $this->redirectToRoute("all");
+        return $this->redirectToRoute("listes_etudiant");
     }
 }

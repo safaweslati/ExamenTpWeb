@@ -17,16 +17,16 @@ class EtudiantFixture extends Fixture
             $etudiant=new Etudiant();
             $etudiant->setFirstname($faker->firstName);
             $etudiant->setName($faker->name);
+            $sections=$manager->getRepository(Section::class)->findAll();
+            $x=rand(1,count($sections)-1);
+            $etudiant->setSection($sections[$x]);
             $manager->persist($etudiant);
-
         }
         for($j=1;$j<10;$j++){
             $etudiant=new Etudiant();
             $etudiant->setFirstname($faker->firstName);
             $etudiant->setName($faker->name);
-            $sections=$manager->getRepository(Section::class)->findAll();
-            $x=rand(1,count($sections)-1);
-            $etudiant->setSection($sections[$x]);
+
             $manager->persist($etudiant);
 
         }

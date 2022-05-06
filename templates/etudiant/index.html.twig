@@ -9,6 +9,16 @@
     <title>Liste des Etudiants</title>
 </head>
 <body>
+{% for msg in app.session.FlashBag.get('succes') %}
+    <div class="alert alert-success">
+        {{ msg }}
+    </div>
+{% endfor %}
+{% for msg in app.session.FlashBag.get('error') %}
+    <div class="alert alert-danger">
+        {{ msg }}
+    </div>
+{% endfor %}
     <div class="container">
     <table class="table table-hover table-dark">
         <thead>
@@ -31,10 +41,10 @@
                 "table-dark"]) }}">
             <td>{{ etudiant.name }}</td>
             <td>{{ etudiant.firstname }}</td>
-            <td>{% if etudiant.section is defined %}{{ etudiant.section }} {% else %} Etudiant non affecté à une section</td>
+            <td>{% if etudiant.section is defined %}{{ etudiant.section }} {% else %} Etudiant non affecté à une section{% endif %}</td>
             <td>
-                <a href="{{ path('add_etudiant',{ id:etudiant.id}) }}">Edit</a>
-                <a href="{{ path('delete_etudiant',{ id:etudiant.id}) }}">delete</a>
+{#                <a href="{{ path('add_etudiant',{ id:etudiant.id}) }}">Edit</a>#}
+{#                <a href="{{ path('delete_etudiant',{ id:etudiant.id}) }}">delete</a>#}
             </td>
             </tr>
         {% endfor %}

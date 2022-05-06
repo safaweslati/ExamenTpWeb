@@ -19,7 +19,7 @@ class Etudiant
     #[ORM\Column(type: 'string', length: 50)]
     private $firstname;
 
-    #[ORM\ManyToOne(targetEntity: section::class, inversedBy: 'etudiants')]
+    #[ORM\ManyToOne(targetEntity: Section::class, inversedBy: 'etudiants')]
     private $section;
 
     public function getId(): ?int
