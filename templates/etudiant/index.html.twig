@@ -7,11 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/slate/bootstrap.min.css">
     <title>Liste des Etudiants</title>
-    <style>
-        .highlight{
-            color: red;
-        }
-    </style>
 </head>
 <body>
 {% for msg in app.session.FlashBag.get('succes') %}
@@ -50,12 +45,5 @@
     </table>
 </div>
 </body>
-<script>
-    document.querySelectorAll("td").forEach((element) =>
-        element.addEventListener("click", () => {
-            element.classList.toggle("highlight");
-        })
-    );
-</script>
-{#<script href={{ asset('assets/js/script.js') }}></script>#}
+<script href={{ asset('assets/js/script.js') }}></script>
 </html>
