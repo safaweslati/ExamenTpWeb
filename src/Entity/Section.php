@@ -16,7 +16,7 @@ class Section
     private $id;
 
     #[ORM\Column(type: 'string', length: 50)]
-    private $designation;
+    private $Designation;
 
     #[ORM\OneToMany(mappedBy: 'section', targetEntity: Etudiant::class)]
     private $etudiants;
@@ -33,12 +33,12 @@ class Section
 
     public function getDesignation(): ?string
     {
-        return $this->designation;
+        return $this->Designation;
     }
 
-    public function setDesignation(string $designation): self
+    public function setDesignation(string $Designation): self
     {
-        $this->designation = $designation;
+        $this->Designation = $Designation;
 
         return $this;
     }
@@ -72,6 +72,7 @@ class Section
 
         return $this;
     }
+
     public function __toString(): string
     {
         return $this->getDesignation();

@@ -45,7 +45,7 @@ class EtudiantController extends AbstractController
         }
     }
 
-    #[Route('/delete/{id<\d+>}', name: 'delete')]
+    #[Route('/DeleteEtudiant/{id<\d+>}', name: 'delete')]
     public function deletePersonne(Etudiant $etudiant = null, ManagerRegistry $doctrine): Response
     {
         if ($etudiant) {

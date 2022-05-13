@@ -13,11 +13,11 @@ class Etudiant
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 50)]
-    private $name;
+    #[ORM\Column(type: 'string', length: 255)]
+    private $Firstname;
 
     #[ORM\Column(type: 'string', length: 50)]
-    private $firstname;
+    private $Name;
 
     #[ORM\ManyToOne(targetEntity: Section::class, inversedBy: 'etudiants')]
     private $section;
@@ -27,36 +27,36 @@ class Etudiant
         return $this->id;
     }
 
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
     public function getFirstname(): ?string
     {
-        return $this->firstname;
+        return $this->Firstname;
     }
 
-    public function setFirstname(string $firstname): self
+    public function setFirstname(string $Firstname): self
     {
-        $this->firstname = $firstname;
+        $this->Firstname = $Firstname;
 
         return $this;
     }
 
-    public function getSection(): ?section
+    public function getName(): ?string
+    {
+        return $this->Name;
+    }
+
+    public function setName(string $Name): self
+    {
+        $this->Name = $Name;
+
+        return $this;
+    }
+
+    public function getSection(): ?Section
     {
         return $this->section;
     }
 
-    public function setSection(?section $section): self
+    public function setSection(?Section $section): self
     {
         $this->section = $section;
 
